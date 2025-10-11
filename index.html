@@ -31,10 +31,11 @@
 </nav>
 
 <!-- Tab: Overview -->
-<section id="tab-info" class="tab-content flex-1 p-6 space-y-4">
+<section id="tab-info" class="tab-content flex-1 p-6 space-y-6">
   <h2 class="text-2xl font-bold text-blue-400">🏁 Electric RC Basics</h2>
   <p class="text-gray-300 leading-relaxed">
-    Electric RC cars are powered by <strong>brushless or brushed motors</strong> and rechargeable LiPo batteries. Lightweight, fast, and low maintenance, they are perfect for both beginners and experienced racers.
+    Electric RC cars are powered by <strong>brushless or brushed motors</strong> and rechargeable LiPo batteries. 
+    Lightweight, fast, and low maintenance, they are perfect for both beginners and experienced racers.
   </p>
 
   <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -51,7 +52,30 @@
       <p class="text-sm text-gray-300">Select voltage and capacity suitable for your setup. Higher voltage = higher speed. Higher capacity = longer runtime.</p>
     </div>
   </div>
+
+  <h3 class="text-xl font-bold text-blue-300 mt-6">🔧 Common RC Components</h3>
+  <ul class="text-gray-300 list-disc ml-6">
+    <li>Chassis: The frame that holds everything together.</li>
+    <li>Motors: Brushless or brushed for propulsion.</li>
+    <li>ESC: Controls motor speed and braking.</li>
+    <li>Batteries: Usually LiPo packs, providing power to the system.</li>
+    <li>Servos: Control steering and other mechanical functions.</li>
+    <li>Radio Transmitter/Receiver: User control and telemetry.</li>
+  </ul>
+
+  <h3 class="text-xl font-bold text-blue-300 mt-6">💡 Beginner Tips</h3>
+  <ul class="text-gray-300 list-disc ml-6">
+    <li>Start with brushed motors and basic ESCs to learn handling.</li>
+    <li>Always balance and safely charge LiPo batteries.</li>
+    <li>Check gearing ratios for your track type to avoid overheating.</li>
+    <li>Regularly inspect tires, suspension, and wires for wear.</li>
+  </ul>
+
+  <h3 class="text-xl font-bold text-blue-300 mt-6">📊 Speed vs Gear Ratio (Interactive)</h3>
+  <canvas id="speedChart" class="bg-gray-800 p-4 rounded-2xl shadow-lg w-full h-64"></canvas>
+  <p class="text-gray-400 text-sm mt-2">Adjust your gear ratio or motor RPM in the "Gears & Speed" tab to see how speed changes.</p>
 </section>
+
 
 <!-- Tab: Motor Types -->
 <section id="tab-motor" class="tab-content hidden p-6 space-y-4">

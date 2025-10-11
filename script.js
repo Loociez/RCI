@@ -114,15 +114,14 @@ const schematicList = document.getElementById('schematicList');
 if (schematicList) {
   const pdfFiles = [
     { name: "MJX 16208 Instruction Manual", file: "MJX-16208.pdf" },
-    { name: "SCY 1101-102-103-201", file: "SCY-1101-102-103-201.pdf" }, // new PDF
-    { name: "ECX-AMP-MT10", file: "ECX-AMP-MT10.pdf" } // new PDF
+    { name: "SCY 1101-102-103-201", file: "SCY-1101-102-103-201.pdf" },
+    { name: "ECX-AMP-MT10", file: "ECX-AMP-MT10.pdf" }
   ];
 
-  // Populate the list
   pdfFiles.forEach(pdf => {
     const li = document.createElement("li");
     const a = document.createElement("a");
-    a.href = "pdf/" + pdf.file; // make sure it points to the pdf folder
+    a.href = "pdf/" + pdf.file;
     a.target = "_blank";
     a.textContent = pdf.name;
     li.appendChild(a);
@@ -130,3 +129,36 @@ if (schematicList) {
   });
 }
 
+// --- Speed vs Gear Ratio Chart (Overview) ---
+const speedChartCanvas = document.getElementById('speedChart');
+if (speedChartCanvas) {
+  const speedChart = new Chart(speedChartCanvas, {
+    type: 'line',
+    data: {
+      labels: Array.from({length: 10}, (_, i) => i + 1), // Gear ratios 1 to 10
+      datasets: [{
+        label: 'Estimated Top Speed (km/h)',
+        data: [20, 28, 35, 42, 48, 53, 57, 60, 62, 63], // Example speeds
+        borderColor: 'rgba(59,130,246,1)',
+        backgroundColor: 'rgba(59,130,246,0.2)',
+        tension: 0.3
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        x: {
+          title: { display: true, text: 'Gear Ratio' },
+          ticks: { color: 'white' },
+          grid: { color: 'rgba(255,255,255,0.1)' }
+        },
+        y: {
+          title: { display: true, text: 'Speed (km/h)' },
+          ticks: { color: 'white' },
+          grid: { color: 'rgba(255,255,255,0.1)' }
+        }
+      },
+      plugins: { legend: { labels: { color: 'white' } } }
+    }
+  });
+}
