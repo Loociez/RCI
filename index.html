@@ -1,41 +1,242 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Electric RC Hub</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Electric RC Hub</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-gray-950 text-gray-100 min-h-screen flex flex-col">
 
-  <!-- Header -->
-  <header class="bg-blue-600 p-4 shadow-lg">
-    <h1 class="text-2xl font-bold text-center tracking-wide">⚡ Electric RC Hub</h1>
-    <p class="text-center text-sm text-blue-100 mt-1">Learn, Build, and Race Smarter</p>
-  </header>
+<!-- Header -->
+<header class="bg-blue-600 p-4 shadow-lg text-center">
+  <h1 class="text-2xl font-bold tracking-wide">⚡ Electric RC Hub</h1>
+  <p class="text-sm text-blue-100 mt-1">Learn, Tune, and Race Smarter</p>
+</header>
 
-  <!-- Search & Filter -->
-  <div class="p-4 flex flex-col sm:flex-row gap-3 bg-gray-900">
-    <input id="searchInput" type="text" placeholder="Search RC cars or topics..." 
-      class="flex-1 px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 focus:ring-2 focus:ring-blue-500">
-    <select id="categoryFilter" class="px-4 py-2 rounded-lg bg-gray-800 border border-gray-700">
-      <option value="all">All Categories</option>
-      <option value="beginner">Beginner</option>
-      <option value="maintenance">Maintenance</option>
-      <option value="performance">Performance</option>
-      <option value="batteries">Batteries</option>
-    </select>
+<!-- Navigation -->
+<nav class="flex justify-center bg-gray-900 text-sm sm:text-base border-b border-gray-800 flex-wrap">
+  <button class="tab-btn px-4 py-2 text-blue-400" data-tab="info">🏁 Overview</button>
+  <button class="tab-btn px-4 py-2 text-gray-400 hover:text-blue-400" data-tab="motor">⚡ Motor Types</button>
+  <button class="tab-btn px-4 py-2 text-gray-400 hover:text-blue-400" data-tab="oil">🛢️ Shock Oil</button>
+  <button class="tab-btn px-4 py-2 text-gray-400 hover:text-blue-400" data-tab="lipo">🔋 LiPo Info</button>
+  <button class="tab-btn px-4 py-2 text-gray-400 hover:text-blue-400" data-tab="kv">⚙️ Voltage & KV</button>
+  <button class="tab-btn px-4 py-2 text-gray-400 hover:text-blue-400" data-tab="gears">⚡ Gearing & Speed</button>
+  <button class="tab-btn px-4 py-2 text-gray-400 hover:text-blue-400" data-tab="battery">⏱️ Battery Runtime</button>
+  <button class="tab-btn px-4 py-2 text-gray-400 hover:text-blue-400" data-tab="esc">🌡️ ESC Temp</button>
+  <button class="tab-btn px-4 py-2 text-gray-400 hover:text-blue-400" data-tab="wire">🔌 Wire Gauge</button>
+  <button class="tab-btn px-4 py-2 text-gray-400 hover:text-blue-400" data-tab="tires">🛞 Tire Sizes</button>
+  <button class="tab-btn px-4 py-2 text-gray-400 hover:text-blue-400" data-tab="schematics">📄 Schematics</button>
+</nav>
+
+<!-- Tab: Overview -->
+<section id="tab-info" class="tab-content flex-1 p-6 space-y-4">
+  <h2 class="text-2xl font-bold text-blue-400">🏁 Electric RC Basics</h2>
+  <p class="text-gray-300 leading-relaxed">
+    Electric RC cars are powered by <strong>brushless or brushed motors</strong> and rechargeable LiPo batteries. Lightweight, fast, and low maintenance, they are perfect for both beginners and experienced racers.
+  </p>
+
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div class="card bg-gray-800 p-4 rounded-2xl shadow-lg">
+      <h3 class="text-lg font-semibold text-blue-300 mb-2">Motor Types</h3>
+      <p class="text-sm text-gray-300">Brushed motors are simple and cheap. Brushless motors are more efficient and powerful. Sensored motors improve low-speed control.</p>
+    </div>
+    <div class="card bg-gray-800 p-4 rounded-2xl shadow-lg">
+      <h3 class="text-lg font-semibold text-blue-300 mb-2">ESC</h3>
+      <p class="text-sm text-gray-300">Electronic speed controllers (ESCs) regulate motor speed and direction. Ensure your ESC matches your battery voltage and motor type.</p>
+    </div>
+    <div class="card bg-gray-800 p-4 rounded-2xl shadow-lg">
+      <h3 class="text-lg font-semibold text-blue-300 mb-2">Battery Tips</h3>
+      <p class="text-sm text-gray-300">Select voltage and capacity suitable for your setup. Higher voltage = higher speed. Higher capacity = longer runtime.</p>
+    </div>
   </div>
+</section>
 
-  <!-- Content Grid -->
-  <main id="infoGrid" class="p-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-4 flex-1"></main>
+<!-- Tab: Motor Types -->
+<section id="tab-motor" class="tab-content hidden p-6 space-y-4">
+  <h2 class="text-2xl font-bold text-blue-400 mb-4">⚡ Motor Comparison</h2>
+  <div class="overflow-x-auto">
+    <table class="table-auto w-full text-sm sm:text-base border-collapse border border-gray-700">
+      <thead>
+        <tr class="bg-gray-800">
+          <th class="border border-gray-600 p-2">Type</th>
+          <th class="border border-gray-600 p-2">Pros</th>
+          <th class="border border-gray-600 p-2">Cons</th>
+          <th class="border border-gray-600 p-2">Use</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="bg-gray-900">
+          <td class="border border-gray-600 p-2">Brushed</td>
+          <td class="border border-gray-600 p-2">Cheap, simple, easy to replace</td>
+          <td class="border border-gray-600 p-2">Wears faster, less efficient</td>
+          <td class="border border-gray-600 p-2">Beginner, casual</td>
+        </tr>
+        <tr class="bg-gray-800">
+          <td class="border border-gray-600 p-2">Brushless Sensorless</td>
+          <td class="border border-gray-600 p-2">Efficient, powerful, low maintenance</td>
+          <td class="border border-gray-600 p-2">Harder low-speed control</td>
+          <td class="border border-gray-600 p-2">Racing, high-speed</td>
+        </tr>
+        <tr class="bg-gray-900">
+          <td class="border border-gray-600 p-2">Brushless Sensored</td>
+          <td class="border border-gray-600 p-2">Precise low-speed control, smooth start</td>
+          <td class="border border-gray-600 p-2">More expensive, requires sensor wires</td>
+          <td class="border border-gray-600 p-2">Bashing, crawling, racing</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
 
-  <!-- Footer -->
-  <footer class="bg-gray-900 p-4 text-center text-gray-400 text-sm">
-    © 2025 Electric RC Hub — Built with ❤️ by Lambertio
-  </footer>
+<!-- Tab: Oil -->
+<section id="tab-oil" class="tab-content hidden p-6">
+  <h2 class="text-2xl font-bold text-blue-400 mb-4">🛢️ Shock Oil Converter</h2>
+  <div class="flex flex-col sm:flex-row gap-4 mb-4">
+    <div class="flex-1">
+      <label class="block mb-1 text-sm">WT (weight):</label>
+      <input id="wtInput" type="number" placeholder="e.g. 35" class="w-full px-3 py-2 bg-gray-800 rounded border border-gray-700">
+    </div>
+    <div class="flex-1">
+      <label class="block mb-1 text-sm">cSt (centistokes):</label>
+      <input id="cstInput" type="number" placeholder="e.g. 425" class="w-full px-3 py-2 bg-gray-800 rounded border border-gray-700">
+    </div>
+  </div>
+  <p id="oilResult" class="text-blue-300 text-sm"></p>
+</section>
 
-  <script src="script.js"></script>
+<!-- Tab: LiPo -->
+<section id="tab-lipo" class="tab-content hidden p-6 space-y-6">
+  <h2 class="text-2xl font-bold text-blue-400 mb-4">🔋 LiPo Battery Info</h2>
+  <div class="grid sm:grid-cols-2 gap-4">
+    <div class="card bg-gray-800 p-4 rounded-2xl shadow-lg">
+      <h3 class="text-lg font-semibold text-blue-300 mb-2">Voltage per Cell</h3>
+      <ul class="text-sm text-gray-300 list-disc ml-4">
+        <li>Full Charge: 4.2V</li>
+        <li>Nominal: 3.7V</li>
+        <li>Storage: 3.8V</li>
+        <li>Low Cutoff: 3.3V</li>
+      </ul>
+    </div>
+    <div class="card bg-gray-800 p-4 rounded-2xl shadow-lg">
+      <h3 class="text-lg font-semibold text-blue-300 mb-2">C-Rating Formula</h3>
+      <p class="text-sm text-gray-300">
+        Capacity (Ah) × C-Rating = Max Safe Current (A)<br>
+        Example: 5Ah × 30C = 150A max draw
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Tab: Voltage & KV -->
+<section id="tab-kv" class="tab-content hidden p-6">
+  <h2 class="text-2xl font-bold text-blue-400 mb-4">⚙️ KV & Voltage Calculator</h2>
+  <div class="grid sm:grid-cols-3 gap-4 mb-4">
+    <div>
+      <label class="block mb-1 text-sm">Motor KV:</label>
+      <input id="kvInput" type="number" placeholder="e.g. 3500" class="w-full px-3 py-2 bg-gray-800 rounded border border-gray-700">
+    </div>
+    <div>
+      <label class="block mb-1 text-sm">Voltage (V):</label>
+      <input id="voltInput" type="number" placeholder="e.g. 11.1" class="w-full px-3 py-2 bg-gray-800 rounded border border-gray-700">
+    </div>
+    <div>
+      <label class="block mb-1 text-sm">Estimated RPM:</label>
+      <input id="rpmOutput" readonly class="w-full px-3 py-2 bg-gray-700 text-gray-200 rounded border border-gray-600">
+    </div>
+  </div>
+</section>
+
+<!-- Tab: Gears & Speed -->
+<section id="tab-gears" class="tab-content hidden p-6 space-y-4">
+  <h2 class="text-2xl font-bold text-blue-400">⚡ Gear Ratio & Speed Estimator</h2>
+  <div class="grid sm:grid-cols-3 gap-4">
+    <div><label>Pinion Teeth:</label><input id="pinionInput" type="number" class="w-full px-3 py-2 bg-gray-800 rounded border border-gray-700"></div>
+    <div><label>Spur Teeth:</label><input id="spurInput" type="number" class="w-full px-3 py-2 bg-gray-800 rounded border border-gray-700"></div>
+    <div><label>Final Drive Ratio:</label><input id="fdrInput" type="number" class="w-full px-3 py-2 bg-gray-800 rounded border border-gray-700"></div>
+  </div>
+  <div class="grid sm:grid-cols-2 gap-4 mt-4">
+    <div><label>Wheel Diameter (mm):</label><input id="diameterInput" type="number" class="w-full px-3 py-2 bg-gray-800 rounded border border-gray-700"></div>
+    <div><label>Motor RPM:</label><input id="motorRPMInput" type="number" class="w-full px-3 py-2 bg-gray-800 rounded border border-gray-700"></div>
+  </div>
+  <p id="gearResult" class="text-blue-300 mt-4 text-sm"></p>
+</section>
+
+<!-- Tab: Battery Runtime -->
+<section id="tab-battery" class="tab-content hidden p-6 space-y-4">
+  <h2 class="text-2xl font-bold text-blue-400">⏱️ Battery Runtime Estimator</h2>
+  <div class="grid sm:grid-cols-2 gap-4">
+    <div>
+      <label>Battery Capacity (mAh):</label>
+      <input id="batCapacity" type="number" class="w-full px-3 py-2 bg-gray-800 rounded border border-gray-700">
+    </div>
+    <div>
+      <label>Average Current Draw (A):</label>
+      <input id="batDraw" type="number" class="w-full px-3 py-2 bg-gray-800 rounded border border-gray-700">
+    </div>
+  </div>
+  <p id="batResult" class="text-blue-300 text-sm mt-2"></p>
+</section>
+
+<!-- Tab: ESC Temp -->
+<section id="tab-esc" class="tab-content hidden p-6 space-y-4">
+  <h2 class="text-2xl font-bold text-blue-400">🌡️ ESC & Motor Temperature Guide</h2>
+  <ul class="text-gray-300 text-sm list-disc ml-4">
+    <li>Safe ESC temp: 40°C–80°C, motor: 40°C–90°C</li>
+    <li>Above these temps, reduce throttle or stop</li>
+    <li>Use cooling fans and proper gearing to avoid overheating</li>
+  </ul>
+</section>
+
+<!-- Tab: Wire Gauge -->
+<section id="tab-wire" class="tab-content hidden p-6 space-y-4">
+  <h2 class="text-2xl font-bold text-blue-400">🔌 Wire Gauge Chart</h2>
+  <div class="overflow-x-auto">
+    <table class="table-auto w-full text-sm sm:text-base border-collapse border border-gray-700">
+      <thead>
+        <tr class="bg-gray-800">
+          <th class="border border-gray-600 p-2">AWG</th>
+          <th class="border border-gray-600 p-2">Amp Capacity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="bg-gray-900"><td class="border p-2">20</td><td class="border p-2">11 A</td></tr>
+        <tr class="bg-gray-800"><td class="border p-2">18</td><td class="border p-2">16 A</td></tr>
+        <tr class="bg-gray-900"><td class="border p-2">16</td><td class="border p-2">22 A</td></tr>
+        <tr class="bg-gray-800"><td class="border p-2">14</td><td class="border p-2">32 A</td></tr>
+        <tr class="bg-gray-900"><td class="border p-2">12</td><td class="border p-2">41 A</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- Tab: Tire Sizes -->
+<section id="tab-tires" class="tab-content hidden p-6 space-y-4">
+  <h2 class="text-2xl font-bold text-blue-400">🛞 Common Tire Sizes</h2>
+  <ul class="text-gray-300 text-sm list-disc ml-4">
+    <li>1/10 On-Road: 60–65mm diameter</li>
+    <li>1/10 Off-Road: 85–105mm</li>
+    <li>1/8 Buggy/Truggy: 120–130mm</li>
+  </ul>
+</section>
+
+<!-- Tab: Schematics -->
+<section id="tab-schematics" class="tab-content hidden p-6 space-y-4">
+  <h2 class="text-2xl font-bold text-blue-400">📄 RC Schematics & Manuals</h2>
+  <p class="text-gray-300 text-sm">
+    Browse or download RC car manuals and schematics. Click the links to view the PDF files.
+  </p>
+  <ul id="schematicList" class="list-disc ml-4 text-gray-300">
+    <!-- PDF links will be dynamically added here by JS -->
+  </ul>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 p-4 text-center text-gray-400 text-sm">
+  © 2025 Electric RC Hub — Built with ❤️ by Lambertio
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
