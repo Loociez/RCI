@@ -1,8 +1,150 @@
+/* ------------------------------
+   General Page Styles
+------------------------------- */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to bottom, #0a0a0a, #1a1a1a);
+  color: #f8f8f8;
+}
+
+/* ------------------------------
+   Card Styles
+------------------------------- */
 .card {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background: linear-gradient(145deg, #1b1b1b, #2b2b2b);
+  border: 1px solid #440000;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.6);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
 }
+
 .card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 12px 25px rgba(255, 0, 0, 0.6);
+  background: linear-gradient(145deg, #2b2b2b, #3b1b1b);
 }
+
+/* ------------------------------
+   Tabs
+------------------------------- */
+.tab-btn {
+  transition: background 0.2s ease, color 0.2s ease;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  border-bottom: 2px solid transparent;
+  color: #f0f0f0;
+}
+
+.tab-btn.active {
+  border-bottom: 2px solid #ff2222;
+  color: #ff2222;
+}
+
+.tab-btn:hover {
+  color: #ff4444;
+}
+
+/* ------------------------------
+   Tables
+------------------------------- */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  border: 1px solid #550000;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+thead tr {
+  background: linear-gradient(90deg, #1b0000, #330000);
+  color: #ff4444;
+}
+
+tbody tr:nth-child(even) {
+  background: #1a1a1a;
+}
+
+tbody tr:nth-child(odd) {
+  background: #0f0f0f;
+}
+
+tbody tr:hover {
+  background: #2b0b0b;
+  color: #ff6666;
+}
+
+/* ------------------------------
+   Inputs
+------------------------------- */
+input, select {
+  background: #1b1b1b;
+  border: 1px solid #550000;
+  color: #f8f8f8;
+  padding: 0.4rem 0.6rem;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus, select:focus {
+  border-color: #ff2222;
+  box-shadow: 0 0 8px rgba(255, 34, 34, 0.6);
+  outline: none;
+}
+
+/* ------------------------------
+   Buttons
+------------------------------- */
+button {
+  cursor: pointer;
+  background: #0f0f0f;
+  border: 1px solid #550000;
+  padding: 0.5rem 1rem;
+  transition: background 0.2s ease, transform 0.2s ease;
+  font-weight: 600;
+  color: #f8f8f8;
+}
+
+button:hover {
+  background: #1b0b0b;
+  transform: translateY(-2px);
+  border-color: #ff2222;
+}
+
+/* ------------------------------
+   Canvas (Charts)
+------------------------------- */
+canvas {
+  border-radius: 8px;
+  border: 1px solid #440000;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+/* ------------------------------
+   Hidden
+------------------------------- */
 .hidden { display: none; }
+
+/* ------------------------------
+   Footer
+------------------------------- */
+footer {
+  background: linear-gradient(90deg, #0f0f0f, #1a0a0a);
+  color: #bbb;
+  padding: 1rem;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+/* ------------------------------
+   Special Racing Effects
+------------------------------- */
+h2, h3 {
+  text-shadow: 1px 1px 3px rgba(255, 34, 34, 0.7);
+}
+
+ul li::marker {
+  color: #ff2222;
+}

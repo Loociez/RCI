@@ -6,13 +6,12 @@
 <title>Electric RC Hub</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="style.css">
-<!-- Chart.js library for interactive charts -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="bg-gray-950 text-gray-100 min-h-screen flex flex-col">
 
 <!-- Header -->
-<header class="bg-blue-600 p-4 shadow-lg text-center">
+<header class="bg-orange-600 p-4 shadow-lg text-center">
   <h1 class="text-2xl font-bold tracking-wide">⚡ Electric RC Hub</h1>
   <p class="text-sm text-blue-100 mt-1">Learn, Tune, and Race Smarter</p>
 </header>
@@ -30,6 +29,7 @@
   <button class="tab-btn px-4 py-2 text-gray-400 hover:text-blue-400" data-tab="wire">🔌 Wire Gauge</button>
   <button class="tab-btn px-4 py-2 text-gray-400 hover:text-blue-400" data-tab="tires">🛞 Tire Sizes</button>
   <button class="tab-btn px-4 py-2 text-gray-400 hover:text-blue-400" data-tab="schematics">📄 Schematics</button>
+  <button class="tab-btn px-4 py-2 text-gray-400 hover:text-blue-400" data-tab="tips">🛠️ Setup & Tips</button>
 </nav>
 
 <!-- Tab: Overview -->
@@ -41,15 +41,15 @@
   </p>
 
   <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-    <div class="card bg-gray-800 p-4 rounded-2xl shadow-lg">
+    <div class="card bg-gray-800 p-4 shadow-lg">
       <h3 class="text-lg font-semibold text-blue-300 mb-2">Motor Types</h3>
       <p class="text-sm text-gray-300">Brushed motors are simple and cheap. Brushless motors are more efficient and powerful. Sensored motors improve low-speed control.</p>
     </div>
-    <div class="card bg-gray-800 p-4 rounded-2xl shadow-lg">
+    <div class="card bg-gray-800 p-4 shadow-lg">
       <h3 class="text-lg font-semibold text-blue-300 mb-2">ESC</h3>
       <p class="text-sm text-gray-300">Electronic speed controllers (ESCs) regulate motor speed and direction. Ensure your ESC matches your battery voltage and motor type.</p>
     </div>
-    <div class="card bg-gray-800 p-4 rounded-2xl shadow-lg">
+    <div class="card bg-gray-800 p-4 shadow-lg">
       <h3 class="text-lg font-semibold text-blue-300 mb-2">Battery Tips</h3>
       <p class="text-sm text-gray-300">Select voltage and capacity suitable for your setup. Higher voltage = higher speed. Higher capacity = longer runtime.</p>
     </div>
@@ -74,7 +74,7 @@
   </ul>
 
   <h3 class="text-xl font-bold text-blue-300 mt-6">📊 Speed vs Gear Ratio (Interactive)</h3>
-  <canvas id="speedChart" class="bg-gray-800 p-4 rounded-2xl shadow-lg w-full h-64"></canvas>
+  <canvas id="speedChart" class="bg-gray-800 p-4 shadow-lg w-full h-64"></canvas>
   <p class="text-gray-400 text-sm mt-2">Adjust your gear ratio or motor RPM in the "Gears & Speed" tab to see how speed changes.</p>
 </section>
 
@@ -135,7 +135,7 @@
 <section id="tab-lipo" class="tab-content hidden p-6 space-y-6">
   <h2 class="text-2xl font-bold text-blue-400 mb-4">🔋 LiPo Battery Info</h2>
   <div class="grid sm:grid-cols-2 gap-4">
-    <div class="card bg-gray-800 p-4 rounded-2xl shadow-lg">
+    <div class="card bg-gray-800 p-4 shadow-lg">
       <h3 class="text-lg font-semibold text-blue-300 mb-2">Voltage per Cell</h3>
       <ul class="text-sm text-gray-300 list-disc ml-4">
         <li>Full Charge: 4.2V</li>
@@ -144,7 +144,7 @@
         <li>Low Cutoff: 3.3V</li>
       </ul>
     </div>
-    <div class="card bg-gray-800 p-4 rounded-2xl shadow-lg">
+    <div class="card bg-gray-800 p-4 shadow-lg">
       <h3 class="text-lg font-semibold text-blue-300 mb-2">C-Rating Formula</h3>
       <p class="text-sm text-gray-300">
         Capacity (Ah) × C-Rating = Max Safe Current (A)<br>
@@ -255,6 +255,63 @@
   <ul id="schematicList" class="list-disc ml-4 text-gray-300">
     <!-- PDF links will be dynamically added here by JS -->
   </ul>
+</section>
+
+<!-- Tab: Setup & Tips -->
+<section id="tab-tips" class="tab-content hidden p-6 space-y-6">
+  <h2 class="text-2xl font-bold text-blue-400">🛠️ RC Car Setup & Tips</h2>
+
+  <h3 class="text-xl font-bold text-blue-300 mt-4">Car Setup Tips</h3>
+  <ul class="text-gray-300 list-disc ml-6">
+    <li>Adjust camber and toe angles for better cornering grip.</li>
+    <li>Tweak shock oil weight for smoothness on bumpy tracks.</li>
+    <li>Check wheel hexes and pinion/spur gear mesh for efficiency.</li>
+    <li>Fine-tune motor timing to balance speed vs. heat.</li>
+  </ul>
+
+  <h3 class="text-xl font-bold text-blue-300 mt-4">Maintenance Checklist</h3>
+  <ul class="text-gray-300 list-disc ml-6">
+    <li>Clean chassis and suspension regularly.</li>
+    <li>Check screws, nuts, and body mounts.</li>
+    <li>Inspect and lubricate bearings and drivetrain.</li>
+    <li>Monitor ESC and motor temperature after runs.</li>
+    <li>Store LiPo batteries at proper voltage and temperature.</li>
+  </ul>
+
+  <h3 class="text-xl font-bold text-blue-300 mt-4">Track & Weather Guide</h3>
+  <ul class="text-gray-300 list-disc ml-6">
+    <li>Use softer shocks on rough tracks, stiffer on smooth tracks.</li>
+    <li>High humidity can reduce traction; adjust tire inserts.</li>
+    <li>Wet tracks require waterproof electronics and careful throttle control.</li>
+    <li>Wind can affect lightweight cars; adjust gearing for stability.</li>
+  </ul>
+
+  <h3 class="text-xl font-bold text-blue-300 mt-4">Community & Racing Events</h3>
+  <ul class="text-gray-300 list-disc ml-6">
+    <li><a href="https://www.redrc.net/" class="text-blue-400 underline">Red RC</a> – RC news, events, and forums.</li>
+    <li><a href="https://www.rcgroups.com/" class="text-blue-400 underline">RC Groups</a> – Largest RC hobbyist community.</li>
+    <li><a href="https://www.roarracing.com/" class="text-blue-400 underline">ROAR Racing</a> – Official sanctioning for competitive racing.</li>
+  </ul>
+
+  <h3 class="text-xl font-bold text-blue-300 mt-4">Quick Reference Charts</h3>
+  <div class="grid sm:grid-cols-2 gap-4">
+    <div class="card bg-gray-800 p-4 shadow-lg">
+      <h4 class="text-lg font-semibold text-blue-300 mb-2">Motor KV Ranges</h4>
+      <ul class="text-gray-300 text-sm list-disc ml-4">
+        <li>1/10 On-Road: 3500–7000KV</li>
+        <li>1/10 Off-Road: 3000–6000KV</li>
+        <li>1/8 Buggy/Truggy: 2000–4000KV</li>
+      </ul>
+    </div>
+    <div class="card bg-gray-800 p-4 shadow-lg">
+      <h4 class="text-lg font-semibold text-blue-300 mb-2">Battery Voltage</h4>
+      <ul class="text-gray-300 text-sm list-disc ml-4">
+        <li>2S LiPo: 7.4V nominal</li>
+        <li>3S LiPo: 11.1V nominal</li>
+        <li>4S LiPo: 14.8V nominal</li>
+      </ul>
+    </div>
+  </div>
 </section>
 
 <!-- Footer -->
