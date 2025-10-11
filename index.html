@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Electric RC Hub</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-950 text-gray-100 min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="bg-blue-600 p-4 shadow-lg">
+    <h1 class="text-2xl font-bold text-center tracking-wide">⚡ Electric RC Hub</h1>
+    <p class="text-center text-sm text-blue-100 mt-1">Learn, Build, and Race Smarter</p>
+  </header>
+
+  <!-- Search & Filter -->
+  <div class="p-4 flex flex-col sm:flex-row gap-3 bg-gray-900">
+    <input id="searchInput" type="text" placeholder="Search RC cars or topics..." 
+      class="flex-1 px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 focus:ring-2 focus:ring-blue-500">
+    <select id="categoryFilter" class="px-4 py-2 rounded-lg bg-gray-800 border border-gray-700">
+      <option value="all">All Categories</option>
+      <option value="beginner">Beginner</option>
+      <option value="maintenance">Maintenance</option>
+      <option value="performance">Performance</option>
+      <option value="batteries">Batteries</option>
+    </select>
+  </div>
+
+  <!-- Content Grid -->
+  <main id="infoGrid" class="p-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-4 flex-1"></main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 p-4 text-center text-gray-400 text-sm">
+    © 2025 Electric RC Hub — Built with ❤️ by Lambertio
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
