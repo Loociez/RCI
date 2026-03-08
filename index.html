@@ -32,60 +32,59 @@
   <button class="tab-btn px-4 py-2 text-gray-400 hover:text-blue-400" data-tab="tips">🛠️ Setup & Tips</button>
 </nav>
 
-<!-- Tab: Overview -->
-<section id="tab-info" class="tab-content flex-1 p-6 space-y-6">
-  <h2 class="text-2xl font-bold text-blue-400">🏁 Electric RC Basics</h2>
-  <p class="text-gray-300 leading-relaxed">
-    Electric RC cars are powered by <strong>brushless or brushed motors</strong> and rechargeable LiPo batteries. 
-    Lightweight, fast, and low maintenance, they are perfect for both beginners and experienced racers.
-  </p>
-
-  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-    <!-- Your existing cards here -->
-  </div>
-
-  <!-- New: Latest News -->
-  <h2 class="text-2xl font-bold text-blue-400 mt-6">📰 Latest RC News</h2>
-  <div id="rc-news" class="grid sm:grid-cols-1 lg:grid-cols-2 gap-4"></div>
-</section>
+<h2 class="text-2xl font-bold text-blue-400 mt-6">📰 Latest RC News</h2>
+<div id="rc-news" class="grid sm:grid-cols-1 lg:grid-cols-2 gap-4"></div>
 
 <script>
-  const rssFeedUrl = 'https://www.bigsquidrc.com/feed'; // RC news RSS
+const rssFeedUrl = 'https://www.bigsquidrc.com/feed';
 
-  async function loadRCNews() {
-    try {
-      const res = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssFeedUrl)}`);
-      const data = await res.json();
-      const newsContainer = document.getElementById('rc-news');
-      newsContainer.innerHTML = '';
+async function loadRCNews() {
+  try {
+    // Use AllOrigins as a CORS proxy
+    const res = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(rssFeedUrl)}`);
+    const data = await res.json();
 
-      if (!data.items) {
-        newsContainer.innerHTML = '<p class="text-gray-400">No news items found.</p>';
-        return;
-      }
+    const parser = new DOMParser();
+    const xmlDoc = parser.parseFromString(data.contents, "text/xml");
+    const items = xmlDoc.querySelectorAll("item");
 
-      data.items.slice(0, 4).forEach(item => {
-        const card = document.createElement('div');
-        card.className = 'card bg-gray-800 p-4 shadow-lg';
-        card.innerHTML = `
-          <h3 class="text-lg font-semibold text-blue-300 mb-2">${item.title}</h3>
-          <p class="text-sm text-gray-300">${item.description ? item.description.substring(0, 120) + '...' : ''}</p>
-          <a href="${item.link}" target="_blank" class="text-blue-400 hover:underline text-sm mt-2 block">Read more</a>
-        `;
-        newsContainer.appendChild(card);
-      });
-    } catch (error) {
-      console.error('Failed to load RC news:', error);
-      document.getElementById('rc-news').innerHTML =
-        '<p class="text-red-500">Failed to load news. Check the console for details.</p>';
+    const newsContainer = document.getElementById('rc-news');
+    newsContainer.innerHTML = '';
+
+    if (items.length === 0) {
+      newsContainer.innerHTML = '<p class="text-gray-400">No news items found.</p>';
+      return;
     }
+
+    // Show latest 4 news items
+    items.forEach((item, index) => {
+      if (index >= 4) return;
+      const title = item.querySelector("title")?.textContent || "No title";
+      const link = item.querySelector("link")?.textContent || "#";
+      const description = item.querySelector("description")?.textContent || "";
+
+      const card = document.createElement('div');
+      card.className = 'card bg-gray-800 p-4 shadow-lg';
+      card.innerHTML = `
+        <h3 class="text-lg font-semibold text-blue-300 mb-2">${title}</h3>
+        <p class="text-sm text-gray-300">${description.substring(0, 120)}...</p>
+        <a href="${link}" target="_blank" class="text-blue-400 hover:underline text-sm mt-2 block">Read more</a>
+      `;
+      newsContainer.appendChild(card);
+    });
+
+  } catch (err) {
+    console.error('Failed to load RC news:', err);
+    document.getElementById('rc-news').innerHTML =
+      '<p class="text-red-500">Failed to load news. Check the console for details.</p>';
   }
+}
 
-  // Load immediately
-  loadRCNews();
+// Load immediately
+loadRCNews();
 
-  // Auto refresh every 5 minutes (300000 ms)
-  setInterval(loadRCNews, 300000);
+// Auto refresh every 5 minutes
+setInterval(loadRCNews, 300000);
 </script>
 
   <h3 class="text-xl font-bold text-blue-300 mt-6">🔧 Common RC Components</h3>
