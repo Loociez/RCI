@@ -35,42 +35,35 @@
 <h2 class="text-2xl font-bold text-blue-400 mt-6">📰 Latest RC News</h2>
 <div id="rc-news" class="grid sm:grid-cols-1 lg:grid-cols-2 gap-4"></div>
 
+<div id="rc-news" class="grid sm:grid-cols-1 lg:grid-cols-2 gap-4"></div>
+
 <script>
-const rssFeedUrl = 'https://www.bigsquidrc.com/feed';
+const rcNewsEndpoint = 'https://rc-news-i0a5dbhuw-loociezs-projects.vercel.app/api/rc-news'; // your live Vercel endpoint
 
 async function loadRCNews() {
   try {
-    const res = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(rssFeedUrl)}`);
+    const res = await fetch(rcNewsEndpoint);
     const data = await res.json();
-
-    const parser = new DOMParser();
-    const xmlDoc = parser.parseFromString(data.contents, "text/xml");
-    const items = xmlDoc.querySelectorAll("item");
 
     const newsContainer = document.getElementById('rc-news');
     newsContainer.innerHTML = '';
 
-    if (items.length === 0) {
+    if (!data.items || data.items.length === 0) {
       newsContainer.innerHTML = '<p class="text-gray-400">No news items found.</p>';
       return;
     }
 
-    items.forEach((item, index) => {
-      if (index >= 4) return; // show only 4 items
-      const title = item.querySelector("title")?.textContent || "No title";
-      const link = item.querySelector("link")?.textContent || "#";
-      const description = item.querySelector("description")?.textContent || "";
-
+    data.items.forEach(item => {
       const card = document.createElement('div');
       card.className = 'card bg-gray-800 p-4 shadow-lg';
       card.innerHTML = `
-        <h3 class="text-lg font-semibold text-blue-300 mb-2">${title}</h3>
-        <p class="text-sm text-gray-300">${description.substring(0, 120)}...</p>
-        <a href="${link}" target="_blank" class="text-blue-400 hover:underline text-sm mt-2 block">Read more</a>
+        <h3 class="text-lg font-semibold text-blue-300 mb-2">${item.title}</h3>
+        <p class="text-sm text-gray-300">${item.description.substring(0, 120)}...</p>
+        <p class="text-xs text-gray-400 mt-1">${new Date(item.pubDate).toLocaleDateString()}</p>
+        <a href="${item.link}" target="_blank" class="text-blue-400 hover:underline text-sm mt-2 block">Read more</a>
       `;
       newsContainer.appendChild(card);
     });
-
   } catch (err) {
     console.error('Failed to load RC news:', err);
     document.getElementById('rc-news').innerHTML =
