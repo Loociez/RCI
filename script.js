@@ -116,6 +116,8 @@ if (schematicList) {
     { name: "MJX 16208 Instruction Manual", file: "MJX-16208.pdf" },
     { name: "MJX 14210", file: "MJX-14210.pdf" },
     { name: "XLF-F28", file: "XLF-F28.pdf" },
+    { name: "FTX-Bugsta", file: "Bugsta.pdf" },
+    { name: "Rlaarlo-Rog1/Gladiator", file: "Rlaarlo_ROG1.pdf" },
     { name: "SCY 1101-102-103-201", file: "SCY-1101-102-103-201.pdf" },
     { name: "ECX-AMP-MT10", file: "ECX-AMP-MT10.pdf" }
   ];
