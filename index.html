@@ -40,7 +40,6 @@ const rssFeedUrl = 'https://www.bigsquidrc.com/feed';
 
 async function loadRCNews() {
   try {
-    // Use AllOrigins as a CORS proxy
     const res = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(rssFeedUrl)}`);
     const data = await res.json();
 
@@ -56,9 +55,8 @@ async function loadRCNews() {
       return;
     }
 
-    // Show latest 4 news items
     items.forEach((item, index) => {
-      if (index >= 4) return;
+      if (index >= 4) return; // show only 4 items
       const title = item.querySelector("title")?.textContent || "No title";
       const link = item.querySelector("link")?.textContent || "#";
       const description = item.querySelector("description")?.textContent || "";
