@@ -8,6 +8,38 @@
 <link rel="stylesheet" href="style.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+<script>
+// Get all tab buttons
+const tabButtons = document.querySelectorAll('.tab-btn');
+const tabContents = document.querySelectorAll('.tab-content');
+
+tabButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const tabId = 'tab-' + btn.dataset.tab; // matches your section IDs
+
+    // Hide all tab contents
+    tabContents.forEach(tab => tab.classList.add('hidden'));
+
+    // Remove active styles from all buttons
+    tabButtons.forEach(b => b.classList.remove('text-blue-400'));
+    tabButtons.forEach(b => b.classList.add('text-gray-400'));
+
+    // Show the clicked tab
+    const activeTab = document.getElementById(tabId);
+    if (activeTab) activeTab.classList.remove('hidden');
+
+    // Highlight the active button
+    btn.classList.remove('text-gray-400');
+    btn.classList.add('text-blue-400');
+
+    // Scroll to top of the tab section
+    window.scrollTo({ top: activeTab.offsetTop - 80, behavior: 'smooth' });
+  });
+});
+
+// Optional: show the first tab on page load
+if(tabButtons.length) tabButtons[0].click();
+</script>
 <body class="bg-gray-950 text-gray-100 min-h-screen flex flex-col">
 
 <!-- Header -->
@@ -33,8 +65,6 @@
 </nav>
 
 <h2 class="text-2xl font-bold text-blue-400 mt-6">📰 Latest RC News</h2>
-<div id="rc-news" class="grid sm:grid-cols-1 lg:grid-cols-2 gap-4"></div>
-
 <div id="rc-news" class="grid sm:grid-cols-1 lg:grid-cols-2 gap-4"></div>
 
 <script>
