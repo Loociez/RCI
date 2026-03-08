@@ -133,25 +133,117 @@
 
 <!-- Tab: LiPo -->
 <section id="tab-lipo" class="tab-content hidden p-6 space-y-6">
-  <h2 class="text-2xl font-bold text-blue-400 mb-4">🔋 LiPo Battery Info</h2>
-  <div class="grid sm:grid-cols-2 gap-4">
-    <div class="card bg-gray-800 p-4 shadow-lg">
-      <h3 class="text-lg font-semibold text-blue-300 mb-2">Voltage per Cell</h3>
-      <ul class="text-sm text-gray-300 list-disc ml-4">
-        <li>Full Charge: 4.2V</li>
-        <li>Nominal: 3.7V</li>
-        <li>Storage: 3.8V</li>
-        <li>Low Cutoff: 3.3V</li>
-      </ul>
-    </div>
-    <div class="card bg-gray-800 p-4 shadow-lg">
-      <h3 class="text-lg font-semibold text-blue-300 mb-2">C-Rating Formula</h3>
-      <p class="text-sm text-gray-300">
-        Capacity (Ah) × C-Rating = Max Safe Current (A)<br>
-        Example: 5Ah × 30C = 150A max draw
-      </p>
-    </div>
-  </div>
+
+<h2 class="text-2xl font-bold text-blue-400 mb-4">🔋 LiPo Battery Info</h2>
+
+<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+<!-- Voltage per Cell -->
+<div class="card bg-gray-800 p-4 shadow-lg">
+<h3 class="text-lg font-semibold text-blue-300 mb-2">Voltage per Cell</h3>
+<ul class="text-sm text-gray-300 list-disc ml-4">
+<li><strong>Full Charge:</strong> 4.2V</li>
+<li><strong>Nominal:</strong> 3.7V</li>
+<li><strong>Storage:</strong> 3.8V</li>
+<li><strong>Low Cutoff:</strong> 3.3V</li>
+</ul>
+</div>
+
+<!-- C Rating -->
+<div class="card bg-gray-800 p-4 shadow-lg">
+<h3 class="text-lg font-semibold text-blue-300 mb-2">C-Rating Formula</h3>
+<p class="text-sm text-gray-300">
+Capacity (Ah) × C-Rating = Max Safe Current (A)
+</p>
+<p class="text-sm text-gray-400 mt-2">
+Example: 5Ah × 30C = <strong>150A</strong> max discharge.
+Higher C ratings allow stronger acceleration and less voltage sag.
+</p>
+</div>
+
+<!-- Battery Capacity -->
+<div class="card bg-gray-800 p-4 shadow-lg">
+<h3 class="text-lg font-semibold text-blue-300 mb-2">Battery Capacity (mAh)</h3>
+<p class="text-sm text-gray-300">
+Capacity determines how long your RC vehicle can run.
+</p>
+<ul class="text-sm text-gray-300 list-disc ml-4 mt-2">
+<li>3000mAh – Short runtime</li>
+<li>5000mAh – Standard runtime</li>
+<li>7000mAh+ – Long runtime</li>
+</ul>
+</div>
+
+<!-- Common LiPo Voltages -->
+<div class="card bg-gray-800 p-4 shadow-lg">
+<h3 class="text-lg font-semibold text-blue-300 mb-2">Common LiPo Packs</h3>
+<ul class="text-sm text-gray-300 list-disc ml-4">
+<li>2S – 7.4V</li>
+<li>3S – 11.1V</li>
+<li>4S – 14.8V</li>
+<li>6S – 22.2V</li>
+</ul>
+<p class="text-sm text-gray-400 mt-2">
+Each LiPo cell provides 3.7V nominal voltage.
+</p>
+</div>
+
+<!-- Battery Types -->
+<div class="card bg-gray-800 p-4 shadow-lg">
+<h3 class="text-lg font-semibold text-blue-300 mb-2">RC Battery Types</h3>
+<ul class="text-sm text-gray-300 list-disc ml-4">
+<li><strong>LiPo:</strong> Most powerful and common.</li>
+<li><strong>Li-Ion:</strong> Longer runtime but lower power.</li>
+<li><strong>NiMH:</strong> Older technology, very safe.</li>
+</ul>
+</div>
+
+<!-- Charging Tips -->
+<div class="card bg-gray-800 p-4 shadow-lg">
+<h3 class="text-lg font-semibold text-blue-300 mb-2">Charging Tips</h3>
+<ul class="text-sm text-gray-300 list-disc ml-4">
+<li>Always use a balance charger.</li>
+<li>Charge at <strong>1C</strong> for best battery lifespan.</li>
+<li>Allow batteries to cool before charging.</li>
+<li>Charge in a LiPo safe bag when possible.</li>
+</ul>
+</div>
+
+<!-- Storage Tips -->
+<div class="card bg-gray-800 p-4 shadow-lg">
+<h3 class="text-lg font-semibold text-blue-300 mb-2">Storage Tips</h3>
+<ul class="text-sm text-gray-300 list-disc ml-4">
+<li>Store at about <strong>3.8V per cell</strong>.</li>
+<li>Do not store fully charged batteries.</li>
+<li>Keep batteries in a cool dry place.</li>
+<li>Use your charger’s storage mode.</li>
+</ul>
+</div>
+
+<!-- Safety -->
+<div class="card bg-gray-800 p-4 shadow-lg">
+<h3 class="text-lg font-semibold text-blue-300 mb-2">Safety</h3>
+<ul class="text-sm text-gray-300 list-disc ml-4">
+<li>Stop using swollen batteries.</li>
+<li>Never puncture or damage packs.</li>
+<li>Avoid discharging below safe voltage.</li>
+<li>Monitor temperature during use.</li>
+</ul>
+</div>
+
+<!-- Performance Tips -->
+<div class="card bg-gray-800 p-4 shadow-lg">
+<h3 class="text-lg font-semibold text-blue-300 mb-2">Performance Tips</h3>
+<ul class="text-sm text-gray-300 list-disc ml-4">
+<li>Higher mAh = longer runtime.</li>
+<li>Higher C rating = stronger acceleration.</li>
+<li>Match battery voltage to ESC rating.</li>
+<li>Avoid overheating batteries.</li>
+</ul>
+</div>
+
+</div>
+
 </section>
 
 <!-- Tab: Voltage & KV -->
@@ -388,13 +480,164 @@
 </section>
 
 <!-- Tab: ESC Temp -->
-<section id="tab-esc" class="tab-content hidden p-6 space-y-4">
-  <h2 class="text-2xl font-bold text-blue-400">🌡️ ESC & Motor Temperature Guide</h2>
-  <ul class="text-gray-300 text-sm list-disc ml-4">
-    <li>Safe ESC temp: 40°C–80°C, motor: 40°C–90°C</li>
-    <li>Above these temps, reduce throttle or stop</li>
-    <li>Use cooling fans and proper gearing to avoid overheating</li>
-  </ul>
+<section id="tab-esc" class="tab-content hidden p-6 space-y-6">
+
+<h2 class="text-2xl font-bold text-blue-400">🌡️ ESC & Motor Guide</h2>
+
+<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+<!-- Temperature Guide -->
+<div class="card bg-gray-800 p-4 shadow-lg">
+<h3 class="text-lg font-semibold text-blue-300 mb-2">Temperature Guide</h3>
+<ul class="text-sm text-gray-300 list-disc ml-4">
+<li>Safe ESC temperature: <strong>40°C – 80°C</strong></li>
+<li>Safe motor temperature: <strong>40°C – 90°C</strong></li>
+<li>Temperatures above this may damage electronics</li>
+<li>If overheating occurs, stop driving and allow cooling</li>
+</ul>
+</div>
+
+<!-- What an ESC Does -->
+<div class="card bg-gray-800 p-4 shadow-lg">
+<h3 class="text-lg font-semibold text-blue-300 mb-2">What an ESC Does</h3>
+<p class="text-sm text-gray-300">
+ESC stands for <strong>Electronic Speed Controller</strong>. It controls how much power from the battery is delivered to the motor.
+</p>
+<ul class="text-sm text-gray-300 list-disc ml-4 mt-2">
+<li>Controls throttle and braking</li>
+<li>Regulates motor speed</li>
+<li>Protects electronics from damage</li>
+<li>Supplies power to receiver via BEC</li>
+</ul>
+</div>
+
+<!-- ESC Types -->
+<div class="card bg-gray-800 p-4 shadow-lg">
+<h3 class="text-lg font-semibold text-blue-300 mb-2">ESC Types</h3>
+<ul class="text-sm text-gray-300 list-disc ml-4">
+<li><strong>Brushed ESC</strong> – Used for brushed motors</li>
+<li><strong>Brushless ESC</strong> – Used for brushless motors</li>
+<li><strong>Sensored ESC</strong> – Smooth low speed control</li>
+<li><strong>Sensorless ESC</strong> – Simpler and more durable</li>
+</ul>
+</div>
+
+<!-- Brushed vs Brushless -->
+<div class="card bg-gray-800 p-4 shadow-lg">
+<h3 class="text-lg font-semibold text-blue-300 mb-2">Brushed vs Brushless</h3>
+
+<p class="text-sm text-gray-300 mb-2"><strong>Brushed ESC</strong></p>
+<ul class="text-sm text-gray-300 list-disc ml-4 mb-2">
+<li>Cheaper</li>
+<li>Simple design</li>
+<li>Used in beginner vehicles</li>
+</ul>
+
+<p class="text-sm text-gray-300 mb-2"><strong>Brushless ESC</strong></p>
+<ul class="text-sm text-gray-300 list-disc ml-4">
+<li>Much more powerful</li>
+<li>Higher efficiency</li>
+<li>Used in most modern RC vehicles</li>
+</ul>
+
+</div>
+
+<!-- Sensor vs Sensorless -->
+<div class="card bg-gray-800 p-4 shadow-lg">
+<h3 class="text-lg font-semibold text-blue-300 mb-2">Sensored vs Sensorless</h3>
+
+<ul class="text-sm text-gray-300 list-disc ml-4">
+<li><strong>Sensored:</strong> smoother startup and precise throttle control</li>
+<li><strong>Sensorless:</strong> simpler, cheaper and more durable</li>
+</ul>
+
+<p class="text-sm text-gray-400 mt-2">
+Sensored setups are popular in racing and drifting. Sensorless setups are common in bashers and off-road vehicles.
+</p>
+
+</div>
+
+<!-- Choosing ESC Amps -->
+<div class="card bg-gray-800 p-4 shadow-lg">
+<h3 class="text-lg font-semibold text-blue-300 mb-2">ESC Amp Rating</h3>
+
+<p class="text-sm text-gray-300">
+ESCs are rated by the maximum current they can safely handle.
+</p>
+
+<ul class="text-sm text-gray-300 list-disc ml-4 mt-2">
+<li>1/10 vehicles: ~60A – 120A</li>
+<li>1/8 vehicles: ~120A – 200A</li>
+<li>Large scale: 200A+</li>
+</ul>
+
+<p class="text-sm text-gray-400 mt-2">
+Always choose an ESC with higher amp capacity than your motor's expected draw.
+</p>
+
+</div>
+
+<!-- BEC -->
+<div class="card bg-gray-800 p-4 shadow-lg">
+<h3 class="text-lg font-semibold text-blue-300 mb-2">BEC (Battery Eliminator Circuit)</h3>
+
+<p class="text-sm text-gray-300">
+The BEC powers your receiver and servo directly from the main battery.
+</p>
+
+<ul class="text-sm text-gray-300 list-disc ml-4 mt-2">
+<li>Eliminates need for separate receiver battery</li>
+<li>Typically provides 5V – 7.4V</li>
+<li>Higher amp BECs are needed for powerful servos</li>
+</ul>
+
+</div>
+
+<!-- Cooling -->
+<div class="card bg-gray-800 p-4 shadow-lg">
+<h3 class="text-lg font-semibold text-blue-300 mb-2">Cooling Tips</h3>
+
+<ul class="text-sm text-gray-300 list-disc ml-4">
+<li>Use ESC cooling fans</li>
+<li>Ensure good airflow inside the chassis</li>
+<li>Use heat sinks on motors</li>
+<li>Avoid running in extreme heat conditions</li>
+</ul>
+
+</div>
+
+<!-- Gearing -->
+<div class="card bg-gray-800 p-4 shadow-lg">
+<h3 class="text-lg font-semibold text-blue-300 mb-2">Gearing & ESC Heat</h3>
+
+<ul class="text-sm text-gray-300 list-disc ml-4">
+<li>Larger pinion gears increase motor load</li>
+<li>High gearing can overheat ESCs</li>
+<li>Reduce pinion size if temperatures rise</li>
+<li>Larger tires also increase load</li>
+</ul>
+
+</div>
+
+<!-- Warning Signs -->
+<div class="card bg-gray-800 p-4 shadow-lg">
+<h3 class="text-lg font-semibold text-blue-300 mb-2">Warning Signs</h3>
+
+<ul class="text-sm text-gray-300 list-disc ml-4">
+<li>ESC shutting down during driving</li>
+<li>Thermal protection activating</li>
+<li>Burning smell from electronics</li>
+<li>Reduced performance after a few minutes</li>
+</ul>
+
+<p class="text-sm text-gray-400 mt-2">
+If these occur, stop driving and allow electronics to cool.
+</p>
+
+</div>
+
+</div>
+
 </section>
 
 <!-- Tab: Wire Gauge -->
