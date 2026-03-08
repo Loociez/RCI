@@ -27,7 +27,7 @@
   <button class="tab-btn px-4 py-2 text-gray-400 hover:text-blue-400" data-tab="battery">⏱️ Battery Runtime</button>
   <button class="tab-btn px-4 py-2 text-gray-400 hover:text-blue-400" data-tab="esc">🌡️ ESC </button>
   <button class="tab-btn px-4 py-2 text-gray-400 hover:text-blue-400" data-tab="wire">🔌 Wire Gauge</button>
-  <button class="tab-btn px-4 py-2 text-gray-400 hover:text-blue-400" data-tab="tires">🛞 Tire Sizes</button>
+  <button class="tab-btn px-4 py-2 text-gray-400 hover:text-blue-400" data-tab="tires"> Tire  </button>
   <button class="tab-btn px-4 py-2 text-gray-400 hover:text-blue-400" data-tab="schematics">📄 Schematics</button>
   <button class="tab-btn px-4 py-2 text-gray-400 hover:text-blue-400" data-tab="tips">🛠️ Setup & Tips</button>
 </nav>
@@ -41,19 +41,52 @@
   </p>
 
   <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-    <div class="card bg-gray-800 p-4 shadow-lg">
-      <h3 class="text-lg font-semibold text-blue-300 mb-2">Motor Types</h3>
-      <p class="text-sm text-gray-300">Brushed motors are simple and cheap. Brushless motors are more efficient and powerful. Sensored motors improve low-speed control.</p>
-    </div>
-    <div class="card bg-gray-800 p-4 shadow-lg">
-      <h3 class="text-lg font-semibold text-blue-300 mb-2">ESC</h3>
-      <p class="text-sm text-gray-300">Electronic speed controllers (ESCs) regulate motor speed and direction. Ensure your ESC matches your battery voltage and motor type.</p>
-    </div>
-    <div class="card bg-gray-800 p-4 shadow-lg">
-      <h3 class="text-lg font-semibold text-blue-300 mb-2">Battery Tips</h3>
-      <p class="text-sm text-gray-300">Select voltage and capacity suitable for your setup. Higher voltage = higher speed. Higher capacity = longer runtime.</p>
-    </div>
+    <!-- Your existing cards here -->
   </div>
+
+  <!-- New: Latest News -->
+  <h2 class="text-2xl font-bold text-blue-400 mt-6">📰 Latest RC News</h2>
+  <div id="rc-news" class="grid sm:grid-cols-1 lg:grid-cols-2 gap-4"></div>
+</section>
+
+<script>
+  const rssFeedUrl = 'https://www.bigsquidrc.com/feed'; // RC news RSS
+
+  async function loadRCNews() {
+    try {
+      const res = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssFeedUrl)}`);
+      const data = await res.json();
+      const newsContainer = document.getElementById('rc-news');
+      newsContainer.innerHTML = '';
+
+      if (!data.items) {
+        newsContainer.innerHTML = '<p class="text-gray-400">No news items found.</p>';
+        return;
+      }
+
+      data.items.slice(0, 4).forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'card bg-gray-800 p-4 shadow-lg';
+        card.innerHTML = `
+          <h3 class="text-lg font-semibold text-blue-300 mb-2">${item.title}</h3>
+          <p class="text-sm text-gray-300">${item.description ? item.description.substring(0, 120) + '...' : ''}</p>
+          <a href="${item.link}" target="_blank" class="text-blue-400 hover:underline text-sm mt-2 block">Read more</a>
+        `;
+        newsContainer.appendChild(card);
+      });
+    } catch (error) {
+      console.error('Failed to load RC news:', error);
+      document.getElementById('rc-news').innerHTML =
+        '<p class="text-red-500">Failed to load news. Check the console for details.</p>';
+    }
+  }
+
+  // Load immediately
+  loadRCNews();
+
+  // Auto refresh every 5 minutes (300000 ms)
+  setInterval(loadRCNews, 300000);
+</script>
 
   <h3 class="text-xl font-bold text-blue-300 mt-6">🔧 Common RC Components</h3>
   <ul class="text-gray-300 list-disc ml-6">
