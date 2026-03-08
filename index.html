@@ -156,21 +156,204 @@
 
 <!-- Tab: Voltage & KV -->
 <section id="tab-kv" class="tab-content hidden p-6">
+
   <h2 class="text-2xl font-bold text-blue-400 mb-4">⚙️ KV & Voltage Calculator</h2>
-  <div class="grid sm:grid-cols-3 gap-4 mb-4">
+
+  <!-- Calculator -->
+  <div class="grid sm:grid-cols-4 gap-4 mb-4">
+
     <div>
       <label class="block mb-1 text-sm">Motor KV:</label>
-      <input id="kvInput" type="number" placeholder="e.g. 3500" class="w-full px-3 py-2 bg-gray-800 rounded border border-gray-700">
+      <input id="kvInput" type="number" placeholder="e.g. 3500"
+      class="w-full px-3 py-2 bg-gray-800 rounded border border-gray-700">
     </div>
+
     <div>
       <label class="block mb-1 text-sm">Voltage (V):</label>
-      <input id="voltInput" type="number" placeholder="e.g. 11.1" class="w-full px-3 py-2 bg-gray-800 rounded border border-gray-700">
+      <input id="voltInput" type="number" placeholder="e.g. 11.1"
+      class="w-full px-3 py-2 bg-gray-800 rounded border border-gray-700">
     </div>
+
     <div>
       <label class="block mb-1 text-sm">Estimated RPM:</label>
-      <input id="rpmOutput" readonly class="w-full px-3 py-2 bg-gray-700 text-gray-200 rounded border border-gray-600">
+      <input id="rpmOutput" readonly
+      class="w-full px-3 py-2 bg-gray-700 text-gray-200 rounded border border-gray-600">
     </div>
+
+    <div>
+      <label class="block mb-1 text-sm">Loaded RPM (~80%)</label>
+      <input id="rpmLoaded" readonly
+      class="w-full px-3 py-2 bg-gray-700 text-gray-200 rounded border border-gray-600">
+    </div>
+
   </div>
+
+
+  <!-- Explanation -->
+  <div class="bg-gray-900 border border-gray-800 rounded p-5 mb-6">
+
+    <h3 class="text-lg font-semibold text-blue-300 mb-2">What is Motor KV?</h3>
+
+    <p class="text-gray-300 mb-3">
+      <strong>KV means RPM per Volt.</strong> It represents how many revolutions per minute a motor spins
+      for each volt applied with no load.
+    </p>
+
+    <p class="text-gray-400 mb-3">
+      Example: A <strong>3500KV motor</strong> running on a <strong>3S LiPo battery (11.1V)</strong> will spin roughly:
+    </p>
+
+    <div class="bg-gray-800 p-3 rounded text-green-400 font-mono mb-3">
+      RPM = KV × Voltage
+    </div>
+
+    <div class="bg-gray-800 p-3 rounded text-green-400 font-mono">
+      3500 × 11.1 = 38,850 RPM
+    </div>
+
+    <p class="text-gray-400 mt-3">
+      This RPM is <strong>theoretical no-load speed</strong>. Real RPM under driving conditions is usually
+      about <strong>70–85% of this value</strong> due to drivetrain resistance and load.
+    </p>
+
+  </div>
+
+
+  <!-- KV Effects -->
+  <div class="bg-gray-900 border border-gray-800 rounded p-5 mb-6">
+
+    <h3 class="text-lg font-semibold text-blue-300 mb-3">What KV Affects</h3>
+
+    <ul class="space-y-2 text-gray-300">
+
+      <li><strong>Top Speed:</strong> Higher KV motors spin faster and allow higher potential speed.</li>
+
+      <li><strong>Torque:</strong> Lower KV motors produce more torque and are better for heavy vehicles.</li>
+
+      <li><strong>Heat:</strong> High KV motors often draw more amps and generate more heat.</li>
+
+      <li><strong>Battery Drain:</strong> Higher KV setups can drain batteries faster.</li>
+
+    </ul>
+
+  </div>
+
+
+  <!-- Battery Table -->
+  <div class="bg-gray-900 border border-gray-800 rounded p-5 mb-6">
+
+    <h3 class="text-lg font-semibold text-blue-300 mb-3">Common LiPo Voltages</h3>
+
+    <table class="w-full text-left text-gray-300 text-sm">
+      <thead class="text-blue-400">
+        <tr>
+          <th class="py-1">Cells</th>
+          <th class="py-1">Voltage</th>
+          <th class="py-1">Description</th>
+        </tr>
+      </thead>
+
+      <tbody class="text-gray-400">
+
+        <tr>
+          <td>2S</td>
+          <td>7.4V</td>
+          <td>Common beginner setups</td>
+        </tr>
+
+        <tr>
+          <td>3S</td>
+          <td>11.1V</td>
+          <td>Fast setups</td>
+        </tr>
+
+        <tr>
+          <td>4S</td>
+          <td>14.8V</td>
+          <td>Very high power</td>
+        </tr>
+
+        <tr>
+          <td>6S</td>
+          <td>22.2V</td>
+          <td>Extreme performance</td>
+        </tr>
+
+      </tbody>
+    </table>
+
+  </div>
+
+
+  <!-- KV Range Guide -->
+  <div class="bg-gray-900 border border-gray-800 rounded p-5 mb-6">
+
+    <h3 class="text-lg font-semibold text-blue-300 mb-3">Typical KV Ranges</h3>
+
+    <table class="w-full text-left text-gray-300 text-sm">
+
+      <thead class="text-blue-400">
+        <tr>
+          <th>Vehicle Type</th>
+          <th>Typical KV</th>
+        </tr>
+      </thead>
+
+      <tbody class="text-gray-400">
+
+        <tr>
+          <td>RC Crawlers</td>
+          <td>800 – 1800KV</td>
+        </tr>
+
+        <tr>
+          <td>1/8 Scale Buggy / Truck</td>
+          <td>1800 – 2200KV</td>
+        </tr>
+
+        <tr>
+          <td>1/10 Scale Buggy</td>
+          <td>3000 – 4000KV</td>
+        </tr>
+
+        <tr>
+          <td>1/10 Touring / Drift</td>
+          <td>4000 – 6000KV</td>
+        </tr>
+
+        <tr>
+          <td>Speed Run Builds</td>
+          <td>5000 – 8000KV</td>
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+
+  <!-- Tips -->
+  <div class="bg-gray-900 border border-gray-800 rounded p-5">
+
+    <h3 class="text-lg font-semibold text-blue-300 mb-3">Setup Tips</h3>
+
+    <ul class="space-y-2 text-gray-300">
+
+      <li>🔧 If you increase battery voltage, reduce pinion gear size.</li>
+
+      <li>🔥 Keep motor temperatures below <strong>80°C</strong> to prevent damage.</li>
+
+      <li>🛞 Larger tires effectively increase gearing and may cause overheating.</li>
+
+      <li>❄️ Use motor heatsinks or fans for high KV setups.</li>
+
+      <li>⚙️ Rule of thumb: <strong>Large vehicle = lower KV</strong></li>
+
+    </ul>
+
+  </div>
+
 </section>
 
 <!-- Tab: Gears & Speed -->
